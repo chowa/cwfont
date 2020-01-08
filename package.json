@@ -1,6 +1,6 @@
 {
   "name": "cwfont",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "svg files convert to font icons",
   "bin": {
     "cwfont": "bin/index.js"
@@ -14,8 +14,7 @@
   },
   "scripts": {
     "lint": "eslint src/*ts",
-    "build": "gulp",
-    "publish": "sh publish.sh"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
