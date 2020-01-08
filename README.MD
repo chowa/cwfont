@@ -7,7 +7,7 @@
 
 > svg文件自动化生成iconfont工具
 
-[![Build Status](https://travis-ci.org/chowa/cwiconfont.svg?branch=master)](https://travis-ci.org/chowa/cwiconfont)
+[![Build Status](https://travis-ci.org/chowa/iconfont.svg?branch=master)](https://travis-ci.org/chowa/iconfont)
 [![npm](https://img.shields.io/npm/v/cwiconfont.svg)](https://www.npmjs.com/package/cwiconfont)
 [![npm](https://img.shields.io/npm/dm/cwiconfont.svg)](https://www.npmjs.com/package/cwiconfont)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
