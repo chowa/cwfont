@@ -15,7 +15,7 @@ function loadCustomOptions() {
         options = require(path.join(process.cwd(), 'cwfont.config.js'));
     }
     else {
-        log.warning('未检测到配置文件，请参考 https://github.com/chowa/iconfont#cli 进行配置');
+        log.warning('未检测到配置文件，请参考 https://github.com/chowa/cwfont#cli 进行配置');
         process.exit();
     }
 
