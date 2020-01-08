@@ -117,7 +117,7 @@
     		<header>
     			<a href="https://github.com/chowa/iconfont">
     				<img class="logo" src="http://upload.ouliu.net/i/202001081600304i7x6.png"/>
-    				<h1>cwiconfont preview</h1>
+    				<h1>cwfont 字体图标预览</h1>
     			</a>
     		</header>
 
