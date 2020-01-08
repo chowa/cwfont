@@ -1,8 +1,7 @@
 import colors from 'colors/safe';
 
-/* eslint-disable */
 const concat = (msg: string) => {
-    return `【cwiconfont】 ${msg}`;
+    return `【cwfont】 ${msg}`; // eslint-disable-line
 };
 
 export function success(msg: string) {
