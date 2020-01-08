@@ -1,5 +1,5 @@
 {
     extends: [
-        'plugin:ege-standard/recommended'
+        'plugin:chowa-standard/recommended'
     ]
 }
