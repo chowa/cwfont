@@ -1,6 +1,6 @@
 {
   "name": "cwiconfont",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": {
     "cwiconfont": "bin/index.js"
