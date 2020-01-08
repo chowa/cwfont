@@ -3,19 +3,19 @@
 </p>
 
 
-# cwiconfont
+# cwfont
 
-> svg文件自动化生成iconfont工具
+> cwfont
 
-[![Build Status](https://travis-ci.org/chowa/iconfont.svg?branch=master)](https://travis-ci.org/chowa/iconfont)
-[![npm](https://img.shields.io/npm/v/cwiconfont.svg)](https://www.npmjs.com/package/cwiconfont)
-[![npm](https://img.shields.io/npm/dm/cwiconfont.svg)](https://www.npmjs.com/package/cwiconfont)
+[![Build Status](https://travis-ci.org/chowa/cwfont.svg?branch=master)](https://travis-ci.org/chowa/cwfont)
+[![npm](https://img.shields.io/npm/v/cwfont.svg)](https://www.npmjs.com/package/cwfont)
+[![npm](https://img.shields.io/npm/dm/cwfont.svg)](https://www.npmjs.com/package/cwfont)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://opensource.org/licenses/MIT)
 
 ## 安装
 
 ```
-npm i cwiconfont -g
+npm i cwfont -g
 ```
 
 ## CLI
@@ -23,34 +23,34 @@ npm i cwiconfont -g
 ### 创建工程
 
 ```
-cwiconfont create <dir>
+cwfont create <dir>
 ```
 
 ### 编译
 
 ```
-cwiconfont compile
+cwfont compile
 ```
 
-可以修改`cwiconfont.config.js`，自定义配置输入、输出目录，开启hash、豁免css modules；具体配置查看[options](#options)
+可以修改`cwfont.config.js`，自定义配置输入、输出目录，开启hash、豁免css modules；具体配置查看[options](#options)
 
 
 ### 预览
 
 ```
-cwiconfont preview
+cwfont preview
 ```
 
 ## API
 
 ```js
-const ChowaIconfont = require('cwiconfont');
+const ChowaFont = require('cwfont');
 ```
 
 ### 生成字体
 
 ```js
-ChowaIconfont.Generator({
+ChowaFont.Generator({
     // 执行目录
     cwd: 'xxx',
     ...options

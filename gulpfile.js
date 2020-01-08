@@ -7,7 +7,7 @@ const banner = require('gulp-banner');
 const pkg = require('./package.json');
 
 const bannerComment = `/**
- * @license cwiconfont v${pkg.version}
+ * @license ${pkg.name} v${pkg.version}
  *
  * Copyright (c) Chowa Techonlogies Co.,Ltd.(http://www.chowa.cn).
  *

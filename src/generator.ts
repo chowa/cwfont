@@ -30,9 +30,9 @@ export interface Manifest {
     glyphs: SelectorMap[];
 }
 
-const manifestFileName = '.cwiconfont.manifest';
+const manifestFileName = '.cwfont.manifest';
 
-class ChowaGenerator {
+class Generator {
 
     private options: Options;
 
@@ -315,7 +315,7 @@ class ChowaGenerator {
         const { selector: defaultSelector } = defaultCompile;
         const globalSelector = this.computedGlobalSelector(defaultSelector);
         const previewSaveDir = path.resolve(cwd, previewPath);
-        const previewSavePath = path.join(previewSaveDir, 'cwiconfont-preview.html');
+        const previewSavePath = path.join(previewSaveDir, 'cwfont-preview.html');
         const styleContent = this.computedStyleContent(
             fs.readFileSync(path.join(__dirname, 'template/style.tpl')).toString(),
             defaultSelector,
@@ -369,4 +369,4 @@ class ChowaGenerator {
     }
 }
 
-export default ChowaGenerator;
+export default Generator;

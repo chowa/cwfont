@@ -21,8 +21,8 @@ function create(dir) {
     log.info(`生成测试 svg 文件`);
     fs.writeFileSync(path.join(dir, 'svg-icons', 'chowa.svg'), logo);
 
-    log.info(`生成配置文件 cwiconfont.config.js`);
-    fs.writeFileSync(path.join(dir, 'cwiconfont.config.js'), defaultConfigContent);
+    log.info(`生成配置文件 cwfont.config.js`);
+    fs.writeFileSync(path.join(dir, 'cwfont.config.js'), defaultConfigContent);
 
     log.success('创建工程成功');
 }

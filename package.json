@@ -1,9 +1,9 @@
 {
-  "name": "cwiconfont",
-  "version": "1.0.3",
-  "description": "",
+  "name": "cwfont",
+  "version": "1.0.0",
+  "description": "svg files convert to font icons",
   "bin": {
-    "cwiconfont": "bin/index.js"
+    "cwfont": "bin/index.js"
   },
   "main": "es/index.js",
   "typings": "es/index.d.ts",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chowa/iconfont.git"
+    "url": "git+https://github.com/chowa/cwfont.git"
   },
   "keywords": [
     "svg",
@@ -34,14 +34,15 @@
     "sass",
     "scss",
     "css",
-    "less"
+    "less",
+    "font"
   ],
   "author": "xuecong8226@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chowa/iconfont/issues"
+    "url": "https://github.com/chowa/cwfont/issues"
   },
-  "homepage": "https://github.com/chowa/iconfont#readme",
+  "homepage": "https://github.com/chowa/cwfont#readme",
   "devDependencies": {
     "@types/node": "^12.12.17",
     "@types/prettier": "^1.19.0",
