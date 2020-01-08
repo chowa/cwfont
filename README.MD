@@ -5,7 +5,7 @@
 
 # cwfont
 
-> cwfont
+> 字体图标生成工具
 
 [![Build Status](https://travis-ci.org/chowa/cwfont.svg?branch=master)](https://travis-ci.org/chowa/cwfont)
 [![npm](https://img.shields.io/npm/v/cwfont.svg)](https://www.npmjs.com/package/cwfont)
