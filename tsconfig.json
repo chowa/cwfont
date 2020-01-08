@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["es7"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noResolve": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "./src/*.ts",
+        "./typings/*.d.ts"
+    ],
+    "compileOnSave": false,
+    "awesomeTypescriptLoaderOptions": {
+      "forkChecker": true,
+      "useWebpackText": true
+    }
+}
