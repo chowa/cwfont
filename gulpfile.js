@@ -7,9 +7,9 @@ const banner = require('gulp-banner');
 const pkg = require('./package.json');
 
 const bannerComment = `/**
- * @license ege-iconfont v${pkg.version}
+ * @license cwiconfont v${pkg.version}
  *
- * Copyright (c) Ege Development Team(https://github.com/ege-ui).
+ * Copyright (c) Chowa Techonlogies Co.,Ltd.(http://www.chowa.cn).
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
