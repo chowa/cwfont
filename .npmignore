@@ -7,3 +7,4 @@ typings
 gulpfile.js
 tsconfig.json
 package-lock.json
+publish.sh

@@ -14,7 +14,8 @@
   },
   "scripts": {
     "lint": "eslint src/*ts",
-    "build": "gulp"
+    "build": "gulp",
+    "publish": "sh publish.sh"
   },
   "repository": {
     "type": "git",
