@@ -9,18 +9,14 @@
 }
 
 {{selector}} {
-    display: inline-block;
-    font-family: "{{fontName}}";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "{{fontName}}" !important;
     font-style: normal;
     font-weight: 400;
-    font-variant: normal;
-    line-height: 1;
-    text-decoration: inherit;
-    text-rendering: optimizeLegibility;
-    text-transform: none;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 {{glyphs}}
