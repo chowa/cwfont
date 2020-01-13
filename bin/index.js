@@ -2,9 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 const program = require('commander');
-const colors = require('colors');
+const cwlog = require('chowa-log');
 const packageJson = require('../package.json');
-const { Generator, utils, log } = require('../es');
+const { Generator, utils } = require('../es');
 const open = require('open');
 const create = require('./create');
 
@@ -15,7 +15,7 @@ function loadCustomOptions() {
         options = require(path.join(process.cwd(), 'cwfont.config.js'));
     }
     else {
-        log.warning('未检测到配置文件，请参考 https://github.com/chowa/cwfont#cli 进行配置');
+        cwlog.warning('No configuration file detected, please refer to https://github.com/chowa/cwfont#cli-usage');
         process.exit();
     }
 
@@ -25,8 +25,8 @@ function loadCustomOptions() {
 program.version(packageJson.version);
 
 program
-    .command('create <dir> [创建目录]')
-    .description('创建 iconfont 工程')
+    .command('create <dir> [Create directory]')
+    .description('Create cwfont project')
     .action((dir) => {
         const createPath = path.resolve(process.cwd(), dir);
 
@@ -35,7 +35,7 @@ program
 
 program
     .command('compile')
-    .description('生成iconfont')
+    .description('Generate iconfont')
     .action(() => {
         new Generator({
             ...loadCustomOptions(),
@@ -45,17 +45,17 @@ program
 
 program
     .command('preview')
-    .description('预览iconfont')
+    .description('Preview iconfont glyphs')
     .action(() => {
         const { output } = loadCustomOptions();
 
         const previewFilePath = path.resolve(process.cwd(), output.preview, 'cwfont-preview.html');
 
         if (!utils.isFile(previewFilePath)) {
-            return log.error('未检测到预览html文件');
+            return cwlog.error('No preview html file detected');
         }
 
-        log.info(`正在打开${previewFilePath}`);
+        cwlog.info(`opening${previewFilePath}`);
 
         open(previewFilePath);
     });

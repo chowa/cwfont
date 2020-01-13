@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const { utils, log, config } = require('../es');
+const cwlog = require('chowa-log');
+const { utils, config } = require('../es');
 
 const logo = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="400px" height="411px" viewBox="0 0 400 411" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -12,19 +13,19 @@ const logo = `<?xml version="1.0" encoding="UTF-8"?>
 const defaultConfigContent = `module.exports = ${JSON.stringify(config, null, 4)}`;
 
 function create(dir) {
-    log.info(`正在 ${dir} 目录创建工程`);
+    cwlog.info(`Creating project directory: ${dir}`);
     utils.mkdir(dir);
 
-    log.info(`创建 svg-icons 目录`);
+    cwlog.info(`Creating svg files directory`);
     utils.mkdir(path.join(dir, 'svg-icons'));
 
-    log.info(`生成测试 svg 文件`);
+    cwlog.info(`Generate test svg file`);
     fs.writeFileSync(path.join(dir, 'svg-icons', 'chowa.svg'), logo);
 
-    log.info(`生成配置文件 cwfont.config.js`);
+    cwlog.info(`Generate a configuration file: cwfont.config.js`);
     fs.writeFileSync(path.join(dir, 'cwfont.config.js'), defaultConfigContent);
 
-    log.success('创建工程成功');
+    cwlog.success('Project created successfully');
 }
 
 module.exports = create;

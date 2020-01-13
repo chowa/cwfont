@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as log from './log';
+import * as cwlog from 'chowa-log';
 
 export function isDir(str: string): boolean {
     return fs.existsSync(str) && fs.statSync(str).isDirectory();
@@ -12,7 +12,7 @@ export function isFile(str: string): boolean {
 
 export function remove(str: string) {
     if (isFile(str)) {
-        log.info(`Cleaning up ${str}`);
+        cwlog.info(`Cleaning up ${str}`);
         fs.unlinkSync(str);
     }
 }

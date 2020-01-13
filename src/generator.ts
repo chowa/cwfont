@@ -8,9 +8,9 @@ import ttfToWoff from 'ttf2woff';
 import ttfToWoff2 from 'ttf2woff2';
 import * as prettier from 'prettier';
 import * as stylelint from 'stylelint';
+import * as cwlog from 'chowa-log';
 import mergeOptions, { Options, defaultOptions } from './options';
 import * as utils from './utils';
-import * as log from './log';
 
 interface Metadata {
     name: string;
@@ -37,7 +37,7 @@ class Generator {
     private options: Options;
 
     public constructor(options: Options) {
-        log.info('Generating, please wait');
+        cwlog.info('Generating, please wait');
 
         this.options = mergeOptions(options);
 
@@ -67,9 +67,9 @@ class Generator {
                 // manifest
                 this.createManifest(map, md5, files);
 
-                log.info('Mission completed');
+                cwlog.info('Mission completed');
             }, () => {
-                log.warning('The svg file was not scanned, or no font was generated, and the program exited');
+                cwlog.warning('The svg file was not scanned, or no font was generated, and the program exited');
             });
     }
 
@@ -102,7 +102,7 @@ class Generator {
                 return reject();
             }
 
-            log.info(`Scanned a total of ${svgFiles.length} svg files`);
+            cwlog.info(`Scanned a total of ${svgFiles.length} svg files`);
 
             const stream = new svgToFont({
                 fontName,
@@ -111,7 +111,7 @@ class Generator {
                 round: 1000,
                 fontWeight: 400,
                 log: () => {
-                    log.info('Scan completed and ready for vector font generation');
+                    cwlog.info('Scan completed and ready for vector font generation');
                 }
             }).on('data', (glyphBuffer: Buffer) => {
                 buffer = Buffer.concat([buffer, glyphBuffer]);
@@ -164,7 +164,7 @@ class Generator {
             }
         }
         catch (e) {
-            log.error(e);
+            cwlog.error(e);
             return;
         }
 
@@ -207,11 +207,11 @@ class Generator {
                 fs.writeFileSync(fontSavePath, content);
             }
             catch (e) {
-                log.error(`Generate ${ext} font ${fontSavePath} error`);
+                cwlog.error(`Generate ${ext} font ${fontSavePath} error`);
                 process.exit();
             }
 
-            log.success(`Generate ${ext} font file: ${fontSavePath}`);
+            cwlog.success(`Generate ${ext} font file: ${fontSavePath}`);
             fontFils.push(fontSavePath);
         });
 
@@ -281,7 +281,7 @@ class Generator {
             const last = (content: string) => {
                 fs.writeFileSync(styleSavePath, content);
 
-                log.success(`Generate style file: ${styleSavePath}`);
+                cwlog.success(`Generate style file: ${styleSavePath}`);
 
                 resolve(styleSavePath);
             };
@@ -350,7 +350,7 @@ class Generator {
         result = prettier.format(result, { ...format, parser: 'html' });
         fs.writeFileSync(previewSavePath, result);
 
-        log.success(`Generate preview html file: ${previewSavePath}`);
+        cwlog.success(`Generate preview html file: ${previewSavePath}`);
 
         return previewSavePath;
     }
