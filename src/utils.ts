@@ -12,7 +12,7 @@ export function isFile(str: string): boolean {
 
 export function remove(str: string) {
     if (isFile(str)) {
-        log.info(`正在清理 ${str}`);
+        log.info(`Cleaning up ${str}`);
         fs.unlinkSync(str);
     }
 }

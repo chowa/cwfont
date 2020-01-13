@@ -37,7 +37,7 @@ class Generator {
     private options: Options;
 
     public constructor(options: Options) {
-        log.info('正在生成，请稍后……');
+        log.info('Generating, please wait');
 
         this.options = mergeOptions(options);
 
@@ -67,9 +67,9 @@ class Generator {
                 // manifest
                 this.createManifest(map, md5, files);
 
-                log.info('任务完成');
+                log.info('Mission completed');
             }, () => {
-                log.warning('未扫描到svg文件，或无字体生成，程序已退出');
+                log.warning('The svg file was not scanned, or no font was generated, and the program exited');
             });
     }
 
@@ -102,7 +102,7 @@ class Generator {
                 return reject();
             }
 
-            log.info(`共扫描到${svgFiles.length}个svg文件`);
+            log.info(`Scanned a total of ${svgFiles.length} svg files`);
 
             const stream = new svgToFont({
                 fontName,
@@ -111,7 +111,7 @@ class Generator {
                 round: 1000,
                 fontWeight: 400,
                 log: () => {
-                    log.info('扫描完成，准备进行矢量字体生成');
+                    log.info('Scan completed and ready for vector font generation');
                 }
             }).on('data', (glyphBuffer: Buffer) => {
                 buffer = Buffer.concat([buffer, glyphBuffer]);
@@ -207,11 +207,11 @@ class Generator {
                 fs.writeFileSync(fontSavePath, content);
             }
             catch (e) {
-                log.error(`生成${ext}字体 ${fontSavePath} 错误`);
+                log.error(`Generate ${ext} font ${fontSavePath} error`);
                 process.exit();
             }
 
-            log.success(`生成${ext}字体 ${fontSavePath}`);
+            log.success(`Generate ${ext} font file: ${fontSavePath}`);
             fontFils.push(fontSavePath);
         });
 
@@ -281,7 +281,7 @@ class Generator {
             const last = (content: string) => {
                 fs.writeFileSync(styleSavePath, content);
 
-                log.success(`生成样式文件 ${styleSavePath}`);
+                log.success(`Generate style file: ${styleSavePath}`);
 
                 resolve(styleSavePath);
             };
@@ -350,7 +350,7 @@ class Generator {
         result = prettier.format(result, { ...format, parser: 'html' });
         fs.writeFileSync(previewSavePath, result);
 
-        log.success(`生成预览html文件 ${previewSavePath}`);
+        log.success(`Generate preview html file: ${previewSavePath}`);
 
         return previewSavePath;
     }
