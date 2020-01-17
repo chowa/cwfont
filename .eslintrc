@@ -1,5 +1,19 @@
 {
+    parser: '@typescript-eslint/parser',
     extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
         'plugin:chowa-standard/recommended'
-    ]
+    ],
+    plugins: [
+        '@typescript-eslint'
+    ],
+    env: {
+        node: true,
+        es6: true
+    },
+    parserOptions: {
+        ecmaVersion: 2017,
+        sourceType: 'module'
+    }
 }
