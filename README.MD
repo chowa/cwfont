@@ -32,8 +32,7 @@ cwfont create <dir>
 cwfont compile
 ```
 
-Modify `cwfont.config.js`，Customize the configuration input and output directories, enable hash and exempt CSS modules, and view the specific configuration[options](#options)
-
+Modify `.cwfontrc`，Customize the configuration input and output directories, enable hash and exempt CSS modules, and view the specific configuration[options](#options). (You can use js/json/yaml/yml to write it)
 
 ### Preview
 
@@ -77,7 +76,7 @@ ChowaFont.Generator({
         selector: '.cw-icon-{{glyph}}'
     },
     // exempt CSS module
-    module: false,
+    global: false,
     // using stylelint to format output code
     stylelint?: boolean;
     // has options

@@ -1,13 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import crypto from 'crypto';
-import svgToFont from 'svgicons2svgfont';
-import svgToTtf from 'svg2ttf';
-import ttfToEot from 'ttf2eot';
-import ttfToWoff from 'ttf2woff';
-import ttfToWoff2 from 'ttf2woff2';
+import svg2font from 'svgicons2svgfont';
+import svg2ttf from 'svg2ttf';
+import ttf2eot from 'ttf2eot';
+import ttf2woff from 'ttf2woff';
+import ttf2woff2 from 'ttf2woff2';
 import * as prettier from 'prettier';
 import * as stylelint from 'stylelint';
+import * as csstree from 'css-tree';
 import * as cwlog from 'chowa-log';
 import mergeOptions, { Options, defaultOptions } from './options';
 import * as utils from './utils';
@@ -104,7 +105,7 @@ class Generator {
 
             cwlog.info(`Scanned a total of ${svgFiles.length} svg files`);
 
-            const stream = new svgToFont({
+            const stream = new svg2font({
                 fontName,
                 normalize: true,
                 fontHeight: 1024,
@@ -184,10 +185,10 @@ class Generator {
         const { font: fontHash } = hash;
         const { fontName } = compile;
         const { font: fontPath } = output;
-        const { buffer: ttfContent } = svgToTtf(svgContent.toString());
-        const { buffer: eotContent } = ttfToEot(ttfContent);
-        const { buffer: woffContent } = ttfToWoff(ttfContent);
-        const woff2Content = ttfToWoff2(ttfContent);
+        const { buffer: ttfContent } = svg2ttf(svgContent.toString());
+        const { buffer: eotContent } = ttf2eot(ttfContent);
+        const { buffer: woffContent } = ttf2woff(ttfContent);
+        const woff2Content = ttf2woff2(ttfContent);
         const fontFils = [];
 
         [
@@ -258,7 +259,7 @@ class Generator {
     }
 
     private async createStyleFile(map: SelectorMap[], md5: string): Promise<string> {
-        const { cwd, compile, input, format, output, module, stylelint: formatWithStylelint, hash } = this.options;
+        const { cwd, compile, input, format, output, global, stylelint: formatWithStylelint, hash } = this.options;
         const { syntax, styleFileName, selector } = compile;
         const { style: styleHash } = hash;
         const { styleTpl: styleTplPath } = input;
@@ -271,8 +272,25 @@ class Generator {
 
         let result = this.computedStyleContent(styleTplContent, selector, map, md5, styleSavePath);
 
-        if (module && syntax !== 'css') {
-            result = `:global{\n${result}\n}`;
+        if (global) {
+            const ast = csstree.parse(result);
+
+            csstree.walk(ast, (node, item, list) => {
+                if (node.type !== 'ClassSelector' && node.type !== 'IdSelector') {
+                    return;
+                }
+
+                const aa = list.createItem({
+                    type: 'PseudoClassSelector',
+                    // this is not a good idea
+                    name: `global(${node.type === 'ClassSelector' ? '.' : '#'}${node.name})`,
+                    children: null
+                });
+
+                list.replace(item, aa);
+            });
+
+            result = csstree.generate(ast);
         }
 
         result = prettier.format(result, { ...format, parser: syntax });

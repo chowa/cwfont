@@ -46,7 +46,7 @@ export interface Options {
     preview?: boolean;
     hash?: HashOptions;
     // css module
-    module?: boolean;
+    global?: boolean;
     // stylelint format
     stylelint?: boolean;
     format?: FormatOptions;
@@ -63,7 +63,7 @@ export const defaultOptions = {
         // 配置必须前面有分隔符
         selector: '.cw-icon-{{glyph}}'
     },
-    module: false,
+    global: false,
     stylelint: false,
     hash: {
         font: false,
@@ -110,7 +110,7 @@ const padInput = (input: InputOptions): InputOptions => {
 };
 
 const mergeOptions = (opt: Options): Options => {
-    const { cwd, module, compile, preview, format, output, input, hash, stylelint } = opt;
+    const { cwd, global, compile, preview, format, output, input, hash, stylelint } = opt;
 
     if (!utils.isDir(cwd)) {
         cwlog.error('Parameter error, execution directory does not exist');
@@ -127,7 +127,7 @@ const mergeOptions = (opt: Options): Options => {
             ...defaultOptions.hash,
             ...hash
         },
-        module: Boolean(module),
+        global: Boolean(global),
         stylelint: Boolean(stylelint),
         preview: Boolean(preview),
         format: {

@@ -2,17 +2,20 @@
 const fs = require('fs');
 const path = require('path');
 const program = require('commander');
+const rcfile = require('rcfile');
 const cwlog = require('chowa-log');
 const packageJson = require('../package.json');
 const { Generator, utils } = require('../es');
 const open = require('open');
+const { configFile } = require('./config');
 const create = require('./create');
 
 function loadCustomOptions() {
     let options = {};
+    const configFilePath = path.join(process.cwd(), configFile);
 
-    if (utils.isFile(path.join(process.cwd(), 'cwfont.config.js'))) {
-        options = require(path.join(process.cwd(), 'cwfont.config.js'));
+    if (utils.isFile(configFilePath)) {
+        options = rcfile('cwfont');
     }
     else {
         cwlog.warning('No configuration file detected, please refer to https://github.com/chowa/cwfont#cli-usage');
