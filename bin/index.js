@@ -4,15 +4,15 @@ const path = require('path');
 const program = require('commander');
 const rcfile = require('rcfile');
 const cwlog = require('chowa-log');
-const packageJson = require('../package.json');
-const { Generator, utils } = require('../es');
 const open = require('open');
-const { configFile } = require('./config');
+const packageJson = require('../package.json');
+const { generator, utils } = require('../es');
+const { configFileName } = require('../es/config');
 const create = require('./create');
 
 function loadCustomOptions() {
     let options = {};
-    const configFilePath = path.join(process.cwd(), configFile);
+    const configFilePath = path.join(process.cwd(), configFileName);
 
     if (utils.isFile(configFilePath)) {
         options = rcfile('cwfont');
@@ -40,7 +40,7 @@ program
     .command('compile')
     .description('Generate iconfont')
     .action(() => {
-        new Generator({
+        new generator({
             ...loadCustomOptions(),
             cwd: process.cwd()
         });

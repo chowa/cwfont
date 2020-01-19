@@ -49,7 +49,7 @@ const ChowaFont = require('cwfont');
 ### Generate font
 
 ```js
-ChowaFont.Generator({
+ChowaFont.generator({
     // executive directory
     cwd: 'xxx',
     ...options
@@ -58,7 +58,7 @@ ChowaFont.Generator({
 
 [options](#options)
 
-## options
+## Options
 
 ```js
 {

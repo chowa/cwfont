@@ -3,7 +3,7 @@ const fs = require('fs');
 const json2yaml = require('json2yaml');
 const cwlog = require('chowa-log');
 const { utils, config } = require('../es');
-const { configFile } = require('./config');
+const { configFileName } = require('../es/config');
 
 const logo = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="400px" height="411px" viewBox="0 0 400 411" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -13,17 +13,20 @@ const logo = `<?xml version="1.0" encoding="UTF-8"?>
 </svg>`;
 
 function create(dir) {
-    cwlog.info(`Creating project directory: ${dir}`);
+    cwlog.info(`Creating project directory on ${dir}`);
     utils.mkdir(dir);
 
-    cwlog.info(`Creating svg files directory`);
-    utils.mkdir(path.join(dir, 'svg-icons'));
+    const svgDir = path.join(dir, 'svg-icons')
+    cwlog.info(`Creating svg files directory on ${svgDir}`);
+    utils.mkdir(svgDir);
 
-    cwlog.info(`Generate test svg file`);
-    fs.writeFileSync(path.join(dir, 'svg-icons', 'chowa.svg'), logo);
+    const svgFile = path.join(dir, 'svg-icons', 'chowa.svg')
+    cwlog.info(`Generate test svg file on ${svgFile}`);
+    fs.writeFileSync(svgFile, logo);
 
-    cwlog.info(`Generate a configuration file: ${configFile}`);
-    fs.writeFileSync(path.join(dir, configFile), json2yaml.stringify(config));
+    cwlog.info(`Generate a configuration file on ${configFileName}`);
+    cwlog.warning('Configuration options detail on https://github.com/chowa/cwfont#options');
+    fs.writeFileSync(path.join(dir, configFileName), json2yaml.stringify(config));
 
     cwlog.success('Project created successfully');
 }

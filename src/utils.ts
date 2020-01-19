@@ -30,3 +30,18 @@ export function mkdir(dir: string) {
         }
     }
 }
+
+export function createHashFileName(name: string, ext: string, bindHash = false, hash: string, len: number): string {
+    const hashFix = bindHash ? `_${hash.substr(0, len)}` : '';
+
+    return `${name}${hashFix}.${ext}`;
+}
+
+export function computedParentSelector(selector: string): string {
+    return selector.substr(0, selector.indexOf('{{glyph}}') - 1);
+}
+
+// fix font path in style on win32
+export function win2posix(str: string): string {
+    return str.replace(/\\+/g, '/');
+}

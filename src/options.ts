@@ -95,7 +95,7 @@ const padInput = (input: InputOptions): InputOptions => {
 
     if (!utils.isDir(ret.svgsDir)) {
         cwlog.error('Parameter error, svg file directory does not exist');
-        throw new Error('Unexpected undefined svgsDir in options.input');
+        process.exit();
     }
 
     if (!utils.isFile(ret.styleTpl)) {
@@ -114,7 +114,7 @@ const mergeOptions = (opt: Options): Options => {
 
     if (!utils.isDir(cwd)) {
         cwlog.error('Parameter error, execution directory does not exist');
-        throw new Error('Unexpected undefined cwd in options');
+        process.exit();
     }
 
     const ret = {
