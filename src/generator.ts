@@ -259,13 +259,11 @@ function generateStyleFile(map: Glyph[], hash: string, opts: Options): Promise<s
                 return;
             }
 
-            const aa = list.createItem({
+            list.replace(item, list.createItem({
                 type: 'PseudoClassSelector',
                 name: `global(${node.type === 'ClassSelector' ? '.' : '#'}${node.name})`,
                 children: null
-            });
-
-            list.replace(item, aa);
+            }));
         });
 
         result = csstree.generate(ast);
