@@ -32,7 +32,7 @@ cwfont create <dir>
 cwfont compile
 ```
 
-Modify `.cwfontrc`，Customize the configuration input and output directories, enable hash and exempt CSS modules, and view the specific configuration[options](#options). (You can use js/json/yaml/yml to write it)
+Modify `.cwfontrc`，Customize the configuration input and output directories, enable hash and exempt CSS modules, and view the specific configuration [options](#options). (You can use js/json/yaml/yml to write it)
 
 ### Preview
 
@@ -55,8 +55,6 @@ ChowaFont.generator({
     ...options
 });
 ```
-
-[options](#options)
 
 ## Options
 
