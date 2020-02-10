@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as cwlog from 'chowa-log';
+import cwlog from 'chowa-log';
 
 export function isDir(str: string): boolean {
     return fs.existsSync(str) && fs.statSync(str).isDirectory();

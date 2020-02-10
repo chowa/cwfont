@@ -28,7 +28,7 @@ function loadCustomOptions() {
 program.version(packageJson.version);
 
 program
-    .command('create <dir> [Create directory]')
+    .command('create <dir>')
     .description('Create cwfont project')
     .action((dir) => {
         const createPath = path.resolve(process.cwd(), dir);
@@ -62,5 +62,10 @@ program
 
         open(previewFilePath);
     });
+
+program.on('command:*', function () {
+    console.error('Invalid command: %s\nSee --help for a list of available commands.', program.args.join(' '));
+    process.exit(1);
+});
 
 program.parse(process.argv);

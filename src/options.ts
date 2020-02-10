@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as cwlog from 'chowa-log';
+import cwlog from 'chowa-log';
 import * as utils from './utils';
 
 export type Style = 'scss' | 'css' | 'less';

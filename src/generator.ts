@@ -9,7 +9,7 @@ import ttf2woff2 from 'ttf2woff2';
 import * as prettier from 'prettier';
 import * as stylelint from 'stylelint';
 import * as csstree from 'css-tree';
-import * as cwlog from 'chowa-log';
+import cwlog from 'chowa-log';
 import mergeOptions, { defaultOptions, Options } from './options';
 import * as utils from './utils';
 import { manifestFileName } from './config';
