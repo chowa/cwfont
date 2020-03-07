@@ -128,10 +128,6 @@ ChowaFont.generator({
 * The 'selector' option '{{glyph}}' in the configuration file must be preceded by a separator
 * Drawing SVG graph with single path
 
-## Example
-
-[ SmokingRabbit personal website ](https://github.com/SmokingRabbit/SmokingRabbit.github.io)
-
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
