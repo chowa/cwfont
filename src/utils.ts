@@ -24,8 +24,8 @@ export function mkdir(dir: string) {
         }
         catch (err) {
             if (err.code === 'ENOENT') {
-                this.mkdir(path.dirname(dir));
-                this.mkdir(dir);
+                mkdir(path.dirname(dir));
+                mkdir(dir);
             }
         }
     }
