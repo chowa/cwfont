@@ -286,7 +286,7 @@ function generateStyleFile(map: Glyph[], hash: string, opts: Options): Promise<s
                 configBasedir: cwd,
                 fix: true,
                 code: result,
-                syntax: syntax as stylelint.SyntaxType
+                syntax
             }).then(({ output }) => finish(output));
         }
         else {

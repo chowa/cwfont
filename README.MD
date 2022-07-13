@@ -132,4 +132,4 @@ ChowaFont.generator({
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2019-present, Chowa
+Copyright (c) 2020-present, chowa.cn
