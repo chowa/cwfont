@@ -1,6 +1,6 @@
 {
   "name": "cwfont",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "svg files convert to font icons",
   "bin": {
     "cwfont": "bin/index.js"
@@ -8,10 +8,6 @@
   "main": "es/index.js",
   "typings": "es/index.d.ts",
   "module": "es/index.js",
-  "engines": {
-    "node": ">=18.5.0",
-    "npm": ">=8.12.1"
-  },
   "scripts": {
     "lint": "eslint src/*ts",
     "build": "gulp"
@@ -58,9 +54,8 @@
   },
   "dependencies": {
     "chowa-log": "latest",
-    "commander": "^9.3.0",
+    "commander": "^9.4.0",
     "css-tree": "^2.1.0",
-    "gulp-util": "^1.0.0",
     "json2yaml": "^1.1.0",
     "open": "^8.4.0",
     "prettier": "^2.7.1",

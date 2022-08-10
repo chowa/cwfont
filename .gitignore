@@ -4,4 +4,3 @@ npm-debug.*
 dist
 es
 dev-test
-package-lock.json

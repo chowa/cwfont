@@ -143,8 +143,8 @@ function generateFontsFile(glyphs: Buffer, hash: string, opts: Options): string[
     const { fontName } = compileOpts;
     const { font: fontPath } = outputOpts;
     const { buffer: ttfContent } = svg2ttf(glyphs.toString());
-    const { buffer: eotContent } = ttf2eot(ttfContent);
-    const { buffer: woffContent } = ttf2woff(ttfContent);
+    const eotContent = ttf2eot(ttfContent);
+    const woffContent = ttf2woff(ttfContent);
     const woff2Content = ttf2woff2(ttfContent);
     const fontFils = [];
 
